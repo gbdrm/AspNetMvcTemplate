@@ -2,7 +2,7 @@
 
 namespace AspNetCoreTemplate.Data.Models
 {
-    public class AppUser : IdentityUser<long>
+    public class AppUser : IdentityUser<Guid>
     {
     }
 }

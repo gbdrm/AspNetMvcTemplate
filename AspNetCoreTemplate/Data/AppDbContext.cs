@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace AspNetCoreTemplate.Data
 {
-    public class AppDbContext : IdentityDbContext<AppUser, IdentityRole<long>, long>
+    public class AppDbContext : IdentityDbContext<AppUser, IdentityRole<Guid>, Guid>
     {
         public DbSet<AppMetadata> AppMetadata { get; set; }
 
