@@ -17,10 +17,8 @@ if (connectionString == null)
 
 builder.Services.AddDbContext<AppDbContext>(options =>
     options.UseNpgsql(connectionString));
-builder.Services.AddDbContext<DataProtectionKeyContext>(options =>
-            options.UseNpgsql(connectionString));
 builder.Services.AddDataProtection()
-    .PersistKeysToDbContext<DataProtectionKeyContext>()
+    .PersistKeysToDbContext<AppDbContext>()
     .SetApplicationName("AspNetCoreTemplate");
 builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
     .AddCookie(options =>
@@ -82,6 +80,7 @@ app.UseDeveloperExceptionPage();
 
 app.UseStaticFiles();
 app.UseRouting();
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllerRoute(
