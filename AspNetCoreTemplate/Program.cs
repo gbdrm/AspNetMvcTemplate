@@ -9,7 +9,7 @@ using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
-bool noHttpsRequired = true; // Hardcoded value to highlight, a lot of modern hosting do https for you
+bool isHttpsRequired = false; // Hardcoded value to highlight, a lot of modern hosting do https for you
 
 var connectionString = builder.Configuration.GetConnectionString("PostgresConnection");
 if (connectionString == null)
@@ -63,16 +63,15 @@ else
     app.UseExceptionHandler("/Home/Error");
 }
 
-if (noHttpsRequired)
-{
-    app.Logger.LogInformation("Deployed on render.com, no need in https");
-}
-else
+if (isHttpsRequired)
 {
     // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
     app.UseHsts();
-
     app.UseHttpsRedirection();
+}
+else
+{
+    app.Logger.LogInformation("No need in https");
 }
 
 // TODO: move later to dev env
