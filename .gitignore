@@ -362,6 +362,5 @@ MigrationBackup/
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
 
-# Do not track settings and migrations
-/AspNetCoreTemplate/appsettings.json
+# Do not track migrations in git, because this is a template
 /AspNetCoreTemplate/Data/Migrations
